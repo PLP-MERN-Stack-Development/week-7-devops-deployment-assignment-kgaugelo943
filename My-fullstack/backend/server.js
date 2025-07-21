@@ -1,3 +1,12 @@
+const Sentry = require("@sentry/node");
+
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+  tracesSampleRate: 1.0,
+});
+
+
+
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
@@ -5,17 +14,27 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import bugRoutes from './routes/bugRoutes.js';
-
-
+import healthRoute from './routes/health.js';
+import * as Sentry from "@sentry/node";
+import monitor from 'express-status-monitor';
 
 dotenv.config();
 const app = express();
 
+app.use(monitor());
 app.use(morgan('combined'))
+app.use('/api', healthRoute);
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+
+Sentry.init({
+  dsn: "YOUR_SENTRY_DSN",
+  tracesSampleRate: 1.0,
+});
+
+app.use(Sentry.Handlers.requestHandler());
 
 app.use('/api/bugs', bugRoutes);
 
