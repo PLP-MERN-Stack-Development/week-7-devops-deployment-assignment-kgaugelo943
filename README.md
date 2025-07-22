@@ -1,78 +1,152 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19951798&assignment_repo_type=AssignmentRepo)
-# Deployment and DevOps for MERN Applications
+Deployment and DevOps Essentials – Launching MERN App
 
-This assignment focuses on deploying a full MERN stack application to production, implementing CI/CD pipelines, and setting up monitoring for your application.
 
-## Assignment Overview
+## 📁 Project Structure
 
-You will:
-1. Prepare your MERN application for production deployment
-2. Deploy the backend to a cloud platform
-3. Deploy the frontend to a static hosting service
-4. Set up CI/CD pipelines with GitHub Actions
-5. Implement monitoring and maintenance strategies
+```
 
-## Getting Started
+My-fullstack/
+├── backend/         # Express + MongoDB API
+├── my-app/          # React frontend (Vite)
+├── .env             # Environment variables
+├── README.md
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week7-Assignment.md` file
-4. Use the provided templates and configuration files as a starting point
+````
 
-## Files Included
 
-- `Week7-Assignment.md`: Detailed assignment instructions
-- `.github/workflows/`: GitHub Actions workflow templates
-- `deployment/`: Deployment configuration files and scripts
-- `.env.example`: Example environment variable templates
-- `monitoring/`: Monitoring configuration examples
 
-## Requirements
+## 🚀 Getting Started
 
-- A completed MERN stack application from previous weeks
-- Accounts on the following services:
-  - GitHub
-  - MongoDB Atlas
-  - Render, Railway, or Heroku (for backend)
-  - Vercel, Netlify, or GitHub Pages (for frontend)
-- Basic understanding of CI/CD concepts
+### 1. Clone the Repo
+```bash
+git clone https://github.com/your-username/your-repo.git
+cd My-fullstack
+````
 
-## Deployment Platforms
+### 2. Install Dependencies
 
-### Backend Deployment Options
-- **Render**: Easy to use, free tier available
-- **Railway**: Developer-friendly, generous free tier
-- **Heroku**: Well-established, extensive documentation
+**Frontend**
 
-### Frontend Deployment Options
-- **Vercel**: Optimized for React apps, easy integration
-- **Netlify**: Great for static sites, good CI/CD
-- **GitHub Pages**: Free, integrated with GitHub
+```bash
+cd my-app
+npm install
+```
 
-## CI/CD Pipeline
+**Backend**
 
-The assignment includes templates for setting up GitHub Actions workflows:
-- `frontend-ci.yml`: Tests and builds the React application
-- `backend-ci.yml`: Tests the Express.js backend
-- `frontend-cd.yml`: Deploys the frontend to your chosen platform
-- `backend-cd.yml`: Deploys the backend to your chosen platform
+```bash
+cd ../backend
+npm install
+```
 
-## Submission
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
 
-1. Complete all deployment tasks
-2. Set up CI/CD pipelines with GitHub Actions
-3. Deploy both frontend and backend to production
-4. Document your deployment process in the README.md
-5. Include screenshots of your CI/CD pipeline in action
-6. Add URLs to your deployed applications
+## ⚙️ Environment Variables
 
-## Resources
+### Frontend `.env` (Vite)
 
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
-- [MongoDB Atlas Documentation](https://docs.atlas.mongodb.com/)
-- [Render Documentation](https://render.com/docs)
-- [Railway Documentation](https://docs.railway.app/)
-- [Vercel Documentation](https://vercel.com/docs)
-- [Netlify Documentation](https://docs.netlify.com/) 
+Add in Vercel Dashboard or `.env`:
+
+```env
+VITE_FIREBASE_API_KEY=your_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
+
+VITE_SENTRY_DSN=your_sentry_dsn
+VITE_API_BASE_URL=https://your-backend.onrender.com/api
+```
+
+
+
+## 💻 Development Scripts
+
+### Frontend
+
+```bash
+cd my-app
+npm run dev
+```
+
+### Backend
+
+```bash
+cd backend
+npm run dev
+```
+
+
+
+## ✅ Testing & Linting
+
+```bash
+npm run lint       # ESLint
+npm test           # Jest or other testing tool
+```
+
+## 🧑‍💻 CI/CD Setup
+
+* **GitHub Actions**:
+
+  * Linting and tests on every push
+  * Auto deploy to Vercel & Render
+* **Vercel**:
+
+  * Deploys frontend on push to `main`
+* **Render**:
+
+  * Backend hosted with environment variables and health checks
+
+
+
+## 🔒 Monitoring & Maintenance
+
+### ✅ Health Check
+
+Backend health endpoint:
+
+```
+GET /api/health
+```
+
+### 🔥 Sentry (Error Tracking)
+
+Sentry is initialized in the frontend and backend for real-time error monitoring.
+
+### 📊 Performance Monitoring
+
+* Sentry Performance
+* Render Dashboard metrics
+* Firebase Analytics (optional)
+
+### 🔁 Backups
+
+* MongoDB backups (configured in MongoDB Atlas)
+
+
+
+## 📦 Deployment
+
+### Frontend (Vercel)
+
+* Vercel auto-deploys from GitHub
+* Static hosting with HTTPS and custom domain support
+
+### Backend (Render)
+
+* Auto-deploy from GitHub on push
+* Express server + MongoDB
+
+
+
+## 📚 Documentation
+
+* [Firebase Setup](https://firebase.google.com/docs)
+* [Render Setup](https://render.com/docs)
+* [Vercel Deployment](https://vercel.com/docs)
+* [GitHub Actions](https://docs.github.com/actions)
+* [Sentry Monitoring](https://docs.sentry.io)
+
