@@ -17,9 +17,14 @@ import bugRoutes from './routes/bugRoutes.js';
 import healthRoute from './routes/health.js';
 import * as Sentry from "@sentry/node";
 import monitor from 'express-status-monitor';
+import { reportWebVitals } from './reportWebVitals';
+
+reportWebVitals(console.log); 
 
 dotenv.config();
 const app = express();
+
+
 
 app.use(monitor());
 app.use(morgan('combined'))
@@ -30,8 +35,8 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 Sentry.init({
-  dsn: "YOUR_SENTRY_DSN",
-  tracesSampleRate: 1.0,
+dsn: "https://8e3dc498b4773c5668f6bd8fde86e10c@o4509708467896320.ingest.de.sentry.io/4509708547457104",
+tracesSampleRate: 1.0,
 });
 
 app.use(Sentry.Handlers.requestHandler());
